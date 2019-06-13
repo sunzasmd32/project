@@ -59,7 +59,8 @@ class UserController extends Controller
 		{
 			$model->attributes=$_POST['User'];
 			if($model->save());
-				$this->redirect(array('/site/index')); //login แล้ว ไปหน้า site/index
+
+				$this->redirect(array('/site/index','confirm'=>'ยืนการสมัครสมาชิก')); //login แล้ว ไปหน้า site/index
 		}
 
 		$this->render('register',array('model'=>$model,));

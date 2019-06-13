@@ -15,7 +15,7 @@
 	'enableAjaxValidation'=>false,
 )); ?>
     <h1>Register<h1>
-	<p class="note">Fields with <span class="required">*</span> are required.</p>
+	
 
 	<?php echo $form->errorSummary($model); ?>
 
@@ -32,7 +32,10 @@
 	</div>
 
 	<div class="row buttons">
-		<?php echo CHtml::submitButton($model->isNewRecord ? 'Register' : 'Save'); ?>
+		<?php echo CHtml::submitButton(
+			$model->isNewRecord ? 'Register' : 'Save',
+			//array('confirm'=>'ยืนการสมัครสมาชิก')
+			); ?>
 	</div>
 
 <?php $this->endWidget(); ?>
