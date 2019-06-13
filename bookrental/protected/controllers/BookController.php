@@ -1,6 +1,6 @@
 <?php
 
-class UserController extends Controller
+class BookController extends Controller
 {
 	/**
 	 * @var string the default layout for the views. Defaults to '//layouts/column2', meaning
@@ -28,7 +28,7 @@ class UserController extends Controller
 	{
 		return array(
 			array('allow',  // allow all users to perform 'index' and 'view' actions
-				'actions'=>array('index','view','register'),
+				'actions'=>array('index','view'),
 				'users'=>array('*'),
 			),
 			array('allow', // allow authenticated user to perform 'create' and 'update' actions
@@ -49,20 +49,6 @@ class UserController extends Controller
 	 * Displays a particular model.
 	 * @param integer $id the ID of the model to be displayed
 	 */
-	public function actionRegister(){
-		$model = new User;
-		
-		if(isset($_POST['User']))
-		{
-			$model->attributes=$_POST['User'];
-			if($model->save());
-				$this->redirect(array('/site/index'));
-		}
-
-		$this->render('register',array('model'=>$model,));
-	}
-
-
 	public function actionView($id)
 	{
 		$this->render('view',array(
@@ -76,16 +62,16 @@ class UserController extends Controller
 	 */
 	public function actionCreate()
 	{
-		$model=new User;
+		$model=new Book;
 
 		// Uncomment the following line if AJAX validation is needed
 		// $this->performAjaxValidation($model);
 
-		if(isset($_POST['User']))
+		if(isset($_POST['Book']))
 		{
-			$model->attributes=$_POST['User'];
+			$model->attributes=$_POST['Book'];
 			if($model->save())
-				$this->redirect(array('view','id'=>$model->id_user));
+				$this->redirect(array('view','id'=>$model->id_book));
 		}
 
 		$this->render('create',array(
@@ -105,11 +91,11 @@ class UserController extends Controller
 		// Uncomment the following line if AJAX validation is needed
 		// $this->performAjaxValidation($model);
 
-		if(isset($_POST['User']))
+		if(isset($_POST['Book']))
 		{
-			$model->attributes=$_POST['User'];
+			$model->attributes=$_POST['Book'];
 			if($model->save())
-				$this->redirect(array('view','id'=>$model->id_user));
+				$this->redirect(array('view','id'=>$model->id_book));
 		}
 
 		$this->render('update',array(
@@ -136,7 +122,7 @@ class UserController extends Controller
 	 */
 	public function actionIndex()
 	{
-		$dataProvider=new CActiveDataProvider('User');
+		$dataProvider=new CActiveDataProvider('Book');
 		$this->render('index',array(
 			'dataProvider'=>$dataProvider,
 		));
@@ -147,10 +133,10 @@ class UserController extends Controller
 	 */
 	public function actionAdmin()
 	{
-		$model=new User('search');
+		$model=new Book('search');
 		$model->unsetAttributes();  // clear any default values
-		if(isset($_GET['User']))
-			$model->attributes=$_GET['User'];
+		if(isset($_GET['Book']))
+			$model->attributes=$_GET['Book'];
 
 		$this->render('admin',array(
 			'model'=>$model,
@@ -161,12 +147,12 @@ class UserController extends Controller
 	 * Returns the data model based on the primary key given in the GET variable.
 	 * If the data model is not found, an HTTP exception will be raised.
 	 * @param integer $id the ID of the model to be loaded
-	 * @return User the loaded model
+	 * @return Book the loaded model
 	 * @throws CHttpException
 	 */
 	public function loadModel($id)
 	{
-		$model=User::model()->findByPk($id);
+		$model=Book::model()->findByPk($id);
 		if($model===null)
 			throw new CHttpException(404,'The requested page does not exist.');
 		return $model;
@@ -174,11 +160,11 @@ class UserController extends Controller
 
 	/**
 	 * Performs the AJAX validation.
-	 * @param User $model the model to be validated
+	 * @param Book $model the model to be validated
 	 */
 	protected function performAjaxValidation($model)
 	{
-		if(isset($_POST['ajax']) && $_POST['ajax']==='user-form')
+		if(isset($_POST['ajax']) && $_POST['ajax']==='book-form')
 		{
 			echo CActiveForm::validate($model);
 			Yii::app()->end();

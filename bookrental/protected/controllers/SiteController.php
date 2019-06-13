@@ -49,6 +49,15 @@ class SiteController extends Controller
 	/**
 	 * Displays the contact page
 	 */
+	public function actionRegister()
+	{
+		$model=new User;
+		
+		
+		$this->render('register',array('model'=>$model));
+	}
+
+
 	public function actionContact()
 	{
 		$model=new ContactForm;
