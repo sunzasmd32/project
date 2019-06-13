@@ -6,8 +6,22 @@
 
 <div class=	"view">
 
+<!-- 	<?php echo CHtml::link(
+					CHtml::image(
+								Yii::app()->baseUrl.'/admin/upload/'.$data->image,
+								"yahoo",
+								array('height'=>'250', 'width'=>'250'),
+								array('http://www.yahoo.com/'))); ?><br> -->
 
-	<?php echo CHtml::image(Yii::app()->baseUrl.'/admin/upload/'.$data->image,'',array('height'=>'250', 'width'=>'250')); ?><br>
+
+	<?php echo CHtml::link(
+
+        CHtml::image(Yii::app()->baseUrl.'/admin/upload/'.$data->image, "yahoo"),
+
+        Yii::app()->baseUrl."/index.php/book/".$data->id_book);
+?>
+<br>
+
 
 	<b><?php echo CHtml::encode($data->getAttributeLabel('ชื่อหนังสือ')); ?>:</b>
 	<?php echo CHtml::encode($data->bookname); ?>
@@ -17,7 +31,7 @@
 	<?php echo CHtml::encode($data->price); ?>
 	<br />
 
-	<b><?php echo CHtml::encode($data->getAttributeLabel('จำนวนคงเหลือ')); ?>:</b>
+<!-- 	<b><?php echo CHtml::encode($data->getAttributeLabel('จำนวนคงเหลือ')); ?>:</b>
 	<?php echo CHtml::encode($data->quantity); ?>
 	<br />
 
@@ -42,7 +56,7 @@
  		<option value="7">7วัน</option>
 	</select>
 	<input type="submit" name="addcart" value="เพิ่มลงตะกร้า">
-<hr><br>
+<hr><br> -->
 
 </div>
 

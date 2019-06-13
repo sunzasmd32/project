@@ -16,15 +16,36 @@ $this->menu=array(
 );
 ?>
 
-<h1>View Book #<?php echo $model->id_book; ?></h1>
 
-<?php $this->widget('zii.widgets.CDetailView', array(
-	'data'=>$model,
-	'attributes'=>array(
-		'id_book',
-		'bookname',
-		'price',
-		'quantity',
-		'image',
-	),
-)); ?>
+<form action="" method="post">
+
+<h1><?php echo $model->bookname; ?></h1>
+
+	<?php echo CHtml::image(Yii::app()->baseUrl.'/admin/upload/'.$model->image,'',array('height'=>'250', 'width'=>'250')); ?><br>
+
+	<b><?php echo CHtml::encode($model->getAttributeLabel('ชิ่อหนังสือ ')); ?>:</b>
+	<?php echo CHtml::encode($model->bookname); ?>
+	<br />
+
+	<b><?php echo CHtml::encode($model->getAttributeLabel('ราคา/วัน ')); ?>:</b>
+	<?php echo CHtml::encode($model->price); ?>
+	<br />
+
+	<b><?php echo CHtml::encode($model->getAttributeLabel('จำนวนคงเหลือ')); ?>:</b>
+	<?php echo CHtml::encode($model->quantity); ?>
+	<br />
+	<input type="input" name="num">จำนวน<br><br>
+
+	<input type="input" name="rentaldate">วัน<br>
+
+
+
+
+	<input type="hidden" name="id_book" value="<?php echo $model->id_book; ?>">
+
+<br>
+	<input type="submit" name="addcart" value="เพิ่มลงตะกร้า">
+<hr>
+
+
+</form>

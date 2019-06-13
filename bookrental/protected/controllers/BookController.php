@@ -51,6 +51,10 @@ class BookController extends Controller
 	 */
 	public function actionView($id)
 	{
+		if (isset($_POST["addcart"])) {
+			$this->render('buy',$_POST["num"]);
+		}
+
 		$this->render('view',array(
 			'model'=>$this->loadModel($id),
 		));
@@ -122,9 +126,6 @@ class BookController extends Controller
 	 */
 	public function actionIndex()
 	{
-		// if (isset($_POST["test"])) {
-		// 	var_dump($_POST["test"]);exit();
-		// }
 
 		$dataProvider=new CActiveDataProvider('Book');
 		$this->render('index',array(
