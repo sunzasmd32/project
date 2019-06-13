@@ -49,6 +49,9 @@ class UserController extends Controller
 	 * Displays a particular model.
 	 * @param integer $id the ID of the model to be displayed
 	 */
+
+
+	 // Register User 
 	public function actionRegister(){
 		$model = new User;
 		
@@ -56,7 +59,7 @@ class UserController extends Controller
 		{
 			$model->attributes=$_POST['User'];
 			if($model->save());
-				$this->redirect(array('/site/index'));
+				$this->redirect(array('/site/index')); //login แล้ว ไปหน้า site/index
 		}
 
 		$this->render('register',array('model'=>$model,));
