@@ -15,19 +15,37 @@ class UserIdentity extends CUserIdentity
 	 * against some persistent user identity storage (e.g. database).
 	 * @return boolean whether authentication succeeds.
 	 */
+	private $_id;
 	public function authenticate()
 	{
-		$users=array(
-			// username => password
-			'demo'=>'demo',
-			'admin'=>'admin',
-		);
-		if(!isset($users[$this->username]))
-			$this->errorCode=self::ERROR_USERNAME_INVALID;
-		elseif($users[$this->username]!==$this->password)
-			$this->errorCode=self::ERROR_PASSWORD_INVALID;
-		else
-			$this->errorCode=self::ERROR_NONE;
-		return !$this->errorCode;
+		// $users=array(
+		// 	// username => password
+		// 	'demo'=>'demo',
+		// 	'admin'=>'admin',
+		// );
+		// if(!isset($users[$this->username]))
+		// 	$this->errorCode=self::ERROR_USERNAME_INVALID;
+		// elseif($users[$this->username]!==$this->password)
+		// 	$this->errorCode=self::ERROR_PASSWORD_INVALID;
+		// else
+		// 	$this->errorCode=self::ERROR_NONE;
+		$user = User::model()->findByAttributes(array('username'=>$this->username));
+
+		if($user === null){
+			$this->errorCode = self::ERROR_USERNAME_INVALID;
+		}else if ($user->password != md5($this->password)){
+			$this->errorCode = self::ERROR_PASSWORD_INVALID;
+		}else {
+			$this->errorCode = self::ERROR_NONE;
+			$this->setState('role',$user->user_type);
+			// $this->_id = $user->id;
+			// if(Yii::app()->session['user_type'] == 'admin'){
+			// 	Yii::$app->getresponse()->redirect('../');
+			// }
 	}
+	return !$this->errorCode;
+}
+// public function getid(){
+// 	return $this->_id;
+// }
 }

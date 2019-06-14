@@ -23,7 +23,7 @@ class UserIdentity extends CUserIdentity
 		$user = User::model()->findByAttributes(array('username'=>$this->username));
 			if($user === null){ //เช็คUsername
 				$this->errorCode = self::ERROR_USERNAME_INVALID;
-			}elseif($user->password != $this->password){//เช็คPassword
+			}elseif($user->password != md5($this->password)){//เช็คPassword
 				$this->errorCode = self::ERROR_PASSWORD_INVALID;
 			}else{ //ผ่าน
 				$this->errorCode = self::ERROR_NONE;
