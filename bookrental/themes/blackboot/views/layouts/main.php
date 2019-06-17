@@ -1,7 +1,7 @@
 <?php
 	Yii::app()->clientscript
-		// use it when you need it!
-		/*
+		 //use it when you need it!
+		
 		->registerCssFile( Yii::app()->theme->baseUrl . '/css/bootstrap.css' )
 		->registerCssFile( Yii::app()->theme->baseUrl . '/css/bootstrap-responsive.css' )
 		->registerCoreScript( 'jquery' )
@@ -17,7 +17,7 @@
 		->registerScriptFile( Yii::app()->theme->baseUrl . '/js/bootstrap-collapse.js', CClientScript::POS_END )
 		->registerScriptFile( Yii::app()->theme->baseUrl . '/js/bootstrap-carousel.js', CClientScript::POS_END )
 		->registerScriptFile( Yii::app()->theme->baseUrl . '/js/bootstrap-typeahead.js', CClientScript::POS_END )
-		*/
+		
 ?>
 <!DOCTYPE html>
 <html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
@@ -51,12 +51,13 @@
 						'htmlOptions' => array( 'class' => 'nav' ),
 						'activeCssClass'	=> 'active',
 						'items'=>array(
-							array('label'=>'Home', 'url'=>array('/site/index')),
+							array('label'=>'Home', 'url'=>array('/book/index')),
 							array('label'=>'About', 'url'=>array('/site/page', 'view'=>'about')),
 							array('label'=>'Contact', 'url'=>array('/site/contact')),
 							array('label'=>'Login', 'url'=>array('/site/login'), 'visible'=>Yii::app()->user->isGuest),
 							array('label'=>'Logout ('.Yii::app()->user->name.')', 'url'=>array('/site/logout'), 'visible'=>!Yii::app()->user->isGuest),
 							array('label'=>'Register', 'url'=>array('/user/register')),
+							array('label'=>'Cart', 'url'=>array('/cart/update')),
 						),
 					)); ?>
 					
