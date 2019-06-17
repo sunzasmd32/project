@@ -127,9 +127,13 @@ class BookController extends Controller
 	public function actionIndex()
 	{
 
-		$dataProvider=new CActiveDataProvider('Book');
+		$model=new Book('search');
+		$model->unsetAttributes();  // clear any default values
+		if(isset($_GET['Book']))
+			$model->attributes=$_GET['Book'];
+
 		$this->render('index',array(
-			'dataProvider'=>$dataProvider,
+			'model'=>$model,
 		));
 	}
 
