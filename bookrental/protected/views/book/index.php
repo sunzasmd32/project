@@ -6,10 +6,10 @@ $this->breadcrumbs=array(
 	'Books',
 );
 
-$this->menu=array(
-	array('label'=>'Create Book', 'url'=>array('create')),
-	array('label'=>'Manage Book', 'url'=>array('admin')),
-);
+// $this->menu=array(
+// 	array('label'=>'Create Book', 'url'=>array('create')),
+// 	array('label'=>'Manage Book', 'url'=>array('admin')),
+// );
 ?>
 
 <h1>Books</h1>

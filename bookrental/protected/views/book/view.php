@@ -7,13 +7,13 @@ $this->breadcrumbs=array(
 	$model->id_book,
 );
 
-$this->menu=array(
-	array('label'=>'List Book', 'url'=>array('index')),
-	array('label'=>'Create Book', 'url'=>array('create')),
-	array('label'=>'Update Book', 'url'=>array('update', 'id'=>$model->id_book)),
-	array('label'=>'Delete Book', 'url'=>'#', 'linkOptions'=>array('submit'=>array('delete','id'=>$model->id_book),'confirm'=>'Are you sure you want to delete this item?')),
-	array('label'=>'Manage Book', 'url'=>array('admin')),
-);
+// $this->menu=array(
+// 	array('label'=>'List Book', 'url'=>array('index')),
+// 	array('label'=>'Create Book', 'url'=>array('create')),
+// 	array('label'=>'Update Book', 'url'=>array('update', 'id'=>$model->id_book)),
+// 	array('label'=>'Delete Book', 'url'=>'#', 'linkOptions'=>array('submit'=>array('delete','id'=>$model->id_book),'confirm'=>'Are you sure you want to delete this item?')),
+// 	array('label'=>'Manage Book', 'url'=>array('admin')),
+// );
 ?>
 
 
@@ -44,7 +44,7 @@ $this->menu=array(
 	<input type="hidden" name="id_book" value="<?php echo $model->id_book; ?>">
 
 <br>
-	<input type="submit" name="addcart" value="เพิ่มลงตะกร้า">
+	<input type="submit" name="addcart" value="เพิ่มลงตะกร้า" >
 <hr>
 
 
